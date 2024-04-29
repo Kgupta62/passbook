@@ -21,7 +21,7 @@ const Filter = () => {
                 <select
                     onChange={(e) => setKey(e.target.value)}
                     value={key}
-                    className="w-full p-2 border rounded-md"
+                    className="w-full p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 transition duration-300"
                 >
                     <option value="amount">Amount</option>
                     <option value="remark">Remark</option>
@@ -32,39 +32,39 @@ const Filter = () => {
                     onChange={(e) => setValue(e.target.value)}
                     value={value}
                     type="text"
-                    className="w-full p-2 border rounded-md mt-2"
+                    className="w-full p-2 border rounded-md mt-2 focus:outline-none focus:ring focus:border-blue-300 transition duration-300"
                     placeholder="Enter Value"
                 />
                 <button
                     type="submit"
-                    className="w-full bg-blue-500 text-white p-2 rounded-md mt-4 hover:bg-blue-600 transition duration-300"
+                    className="w-full bg-blue-500 text-white p-2 rounded-md mt-4 hover:bg-blue-600 transition duration-300 focus:outline-none focus:ring focus:border-blue-300"
                 >
                     Filter
                 </button>
             </form>
-            <hr />
+            <hr className="my-4" />
             {filterExpenses.length === 0 ? (
-                <p className="text-gray-500">No filter selected</p>
+                <p className="text-gray-500 text-center">No filter selected</p>
             ) : (
                 <div>
                     {filterExpenses.map((e, index) => (
-                        <p
+                        <div
                             key={index}
-                            className="mb-2 flex justify-between items-center"
+                            className="mb-4 border-b border-gray-200 py-2 flex justify-between items-center transition duration-300 hover:bg-gray-100"
                         >
-                            <span>
+                            <span className="flex-1">
                                 {e.remark} ({e.payment}) - {e.category} - ${e.amount}{" "}
                             </span>
                             <button className="text-red-500 focus:outline-none">
                                 ❌
                             </button>
-                        </p>
+                        </div>
                     ))}
                 </div>
             )}
             <Link
                 to="/show"
-                className="text-blue-500 underline block mt-4"
+                className="text-blue-500 underline block mt-4 text-center transition duration-300 hover:text-blue-700 focus:outline-none focus:ring focus:border-blue-300"
             >
                 Go back
             </Link>

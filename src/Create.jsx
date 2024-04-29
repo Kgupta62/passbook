@@ -13,15 +13,14 @@ const Create = () => {
     const SubmitHandler = (e) => {
         e.preventDefault();
         const newExpense = { amount, remark, category, payment };
-        const copyExpenses = [...expenses];
-        copyExpenses.push(newExpense);
+        const copyExpenses = [...expenses, newExpense]; // Adding new expense to the copy of expenses
         setExpenses(copyExpenses);
-        localStorage.setItem("expenses", JSON.stringify(copyExpenses));
+        localStorage.setItem("expenses", JSON.stringify(copyExpenses)); // Storing expenses in localStorage
         navigate("/show");
     };
 
     return (
-        <form className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+        <form onSubmit={SubmitHandler} className="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
             <h2 className="text-2xl font-bold mb-4">Add Expense</h2>
             <div className="mb-4">
                 <input
@@ -73,4 +72,3 @@ const Create = () => {
 };
 
 export default Create;
-
